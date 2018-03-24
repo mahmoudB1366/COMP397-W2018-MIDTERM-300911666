@@ -1,5 +1,5 @@
 module objects {
-    export class PlaneLevel2 extends objects.GameObject {
+    export class PlaneLevel3 extends objects.GameObject {
       // private instance variables
   
   

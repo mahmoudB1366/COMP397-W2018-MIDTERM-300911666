@@ -31,10 +31,10 @@ var scenes;
             this._island = new objects.IslandLevel2();
             // instantiate the cloud array
             this._clouds = new Array();
-            this._cloudNum = 0;
+            this._cloudNum = 3;
             // loop and add each cloud to the array
             for (var count = 0; count < this._cloudNum; count++) {
-                this._clouds[count] = new objects.Cloud();
+                this._clouds[count] = new objects.CloudLevel2();
             }
             this._engineSound = createjs.Sound.play("engine");
             this._engineSound.loop = -1; // play forever
@@ -70,6 +70,7 @@ var scenes;
         };
         // This is where the fun happens
         level2Scene.prototype.Main = function () {
+            var _this = this;
             // add the ocean to the scene
             this.addChild(this._ocean);
             // add the island to the scene
@@ -80,10 +81,9 @@ var scenes;
             this.addChild(this._plane);
             this.addChild(this._plane.planeFlash); // add the plane flashing effect
             // add clouds to the scene
-            /*this._clouds.forEach(cloud => {
-              this.addChild(cloud);
+            this._clouds.forEach(function (cloud) {
+                _this.addChild(cloud);
             });
-      */
             // add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);

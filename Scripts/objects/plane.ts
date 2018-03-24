@@ -13,7 +13,7 @@ module objects {
     }
 
     // private methods
-    private _animationEnded():void {
+    public _animationEnded():void {
       if(this.alpha == 0) {
         this.alpha = 1;
         this.planeFlash.alpha = 0;

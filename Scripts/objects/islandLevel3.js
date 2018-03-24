@@ -10,49 +10,46 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var CloudLevel2 = /** @class */ (function (_super) {
-        __extends(CloudLevel2, _super);
+    var IslandLevel3 = /** @class */ (function (_super) {
+        __extends(IslandLevel3, _super);
         // private instance variables
         // public properties
         // Constructor
-        function CloudLevel2() {
-            var _this = _super.call(this, "cloud") || this;
+        function IslandLevel3() {
+            var _this = _super.call(this, "island") || this;
             _this.Start();
-            _this.rotation = 90;
             return _this;
         }
         // private methods
         // public methods
         // Initializes variables and creates new objects
-        CloudLevel2.prototype.Start = function () {
+        IslandLevel3.prototype.Start = function () {
+            this._dx = 5;
             this.Reset();
         };
         // updates the game object every frame
-        CloudLevel2.prototype.Update = function () {
+        IslandLevel3.prototype.Update = function () {
             this.Move();
             this.CheckBounds();
         };
         // reset the objects location to some value
-        CloudLevel2.prototype.Reset = function () {
+        IslandLevel3.prototype.Reset = function () {
             this.y = Math.floor((Math.random() * (480 - this.width)) + this.halfWidth);
-            this.x = 640 + this.height;
-            this._dy = Math.floor((Math.random() * 4) - 2);
-            this._dx = Math.floor((Math.random() * 5) + 5);
+            this.x = 640 + this.width;
         };
         // move the object to some new location
-        CloudLevel2.prototype.Move = function () {
-            this.y += this._dy;
+        IslandLevel3.prototype.Move = function () {
             this.x -= this._dx;
         };
         // check to see if some boundary has been passed
-        CloudLevel2.prototype.CheckBounds = function () {
+        IslandLevel3.prototype.CheckBounds = function () {
             // check lower bounds
-            if (this.x <= 0 - this.height) {
+            if (this.x <= 0 - this.width) {
                 this.Reset();
             }
         };
-        return CloudLevel2;
+        return IslandLevel3;
     }(objects.GameObject));
-    objects.CloudLevel2 = CloudLevel2;
+    objects.IslandLevel3 = IslandLevel3;
 })(objects || (objects = {}));
-//# sourceMappingURL=cloudLevel2.js.map
+//# sourceMappingURL=islandLevel3.js.map
