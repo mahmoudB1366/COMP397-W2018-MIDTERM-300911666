@@ -18,19 +18,20 @@ var scenes;
             var _this = _super.call(this) || this;
             _this.Start();
             return _this;
+            //TO BE REMOVE
         }
         // Private Mathods
         // Public Methods
         // Initialize Game Variables and objects
         level2Scene.prototype.Start = function () {
-            this._ocean = new objects.Ocean();
-            this._plane = new objects.Plane();
+            this._ocean = new objects.OceanLevel2();
+            this._plane = new objects.PlaneLevel2();
             managers.Game.plane = this._plane;
-            this._coin = new objects.Coin();
-            this._island = new objects.Island();
+            this._coin = new objects.CoinLevel2();
+            this._island = new objects.IslandLevel2();
             // instantiate the cloud array
             this._clouds = new Array();
-            this._cloudNum = 3;
+            this._cloudNum = 0;
             // loop and add each cloud to the array
             for (var count = 0; count < this._cloudNum; count++) {
                 this._clouds[count] = new objects.Cloud();
@@ -39,8 +40,10 @@ var scenes;
             this._engineSound.loop = -1; // play forever
             this._engineSound.volume = 0.3;
             // create the scoreboard UI for the Scene
+            //this._scoreBoard = new managers.ScoreBoard();
+            //this._scoreBoard = managers.Game.scoreBoard;
             this._scoreBoard = new managers.ScoreBoard();
-            this._scoreBoard = managers.Game.scoreBoard;
+            managers.Game.scoreBoard = this._scoreBoard;
             this.Main();
         };
         // triggered every frame
@@ -67,7 +70,6 @@ var scenes;
         };
         // This is where the fun happens
         level2Scene.prototype.Main = function () {
-            var _this = this;
             // add the ocean to the scene
             this.addChild(this._ocean);
             // add the island to the scene
@@ -78,9 +80,10 @@ var scenes;
             this.addChild(this._plane);
             this.addChild(this._plane.planeFlash); // add the plane flashing effect
             // add clouds to the scene
-            this._clouds.forEach(function (cloud) {
-                _this.addChild(cloud);
+            /*this._clouds.forEach(cloud => {
+              this.addChild(cloud);
             });
+      */
             // add scoreboard labels to the scene
             this.addChild(this._scoreBoard.LivesLabel);
             this.addChild(this._scoreBoard.ScoreLabel);

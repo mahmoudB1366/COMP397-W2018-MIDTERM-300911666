@@ -1,15 +1,15 @@
 module scenes {
     export class level2Scene extends objects.Scene {
       // Private Instance Variables
-      private _ocean: objects.Ocean;
-      private _plane: objects.Plane;
-      private _island: objects.Island;
+      private _ocean: objects.OceanLevel2;
+      private _plane: objects.PlaneLevel2;
+      private _island: objects.IslandLevel2;
       private _clouds: objects.Cloud[];
       private _cloudNum: number;
       private _scoreBoard: managers.ScoreBoard;
   
       private _engineSound: createjs.AbstractSoundInstance;
-      private _coin: objects.Coin;
+      private _coin: objects.CoinLevel2;
   
       // Public Properties
   
@@ -18,6 +18,8 @@ module scenes {
         super();
   
         this.Start();
+
+        //TO BE REMOVE
       }
   
       // Private Mathods
@@ -28,16 +30,16 @@ module scenes {
   
       // Initialize Game Variables and objects
       public Start(): void {
-        this._ocean = new objects.Ocean();
-        this._plane = new objects.Plane();
+        this._ocean = new objects.OceanLevel2();
+        this._plane = new objects.PlaneLevel2();
         managers.Game.plane = this._plane;
   
-        this._coin = new objects.Coin();
-        this._island = new objects.Island();
+        this._coin = new objects.CoinLevel2();
+        this._island = new objects.IslandLevel2();
   
         // instantiate the cloud array
         this._clouds = new Array<objects.Cloud>();
-        this._cloudNum = 3;
+        this._cloudNum = 0;
         // loop and add each cloud to the array
         for (let count = 0; count < this._cloudNum; count++) {
           this._clouds[count] = new objects.Cloud();
@@ -48,9 +50,12 @@ module scenes {
         this._engineSound.volume = 0.3;
   
         // create the scoreboard UI for the Scene
-        this._scoreBoard = new managers.ScoreBoard();
-        this._scoreBoard = managers.Game.scoreBoard;
+        //this._scoreBoard = new managers.ScoreBoard();
+        //this._scoreBoard = managers.Game.scoreBoard;
   
+        this._scoreBoard = new managers.ScoreBoard();
+        managers.Game.scoreBoard = this._scoreBoard;
+
         this.Main();
       }
   
@@ -99,10 +104,10 @@ module scenes {
   
         // add clouds to the scene
   
-        this._clouds.forEach(cloud => {
+        /*this._clouds.forEach(cloud => {
           this.addChild(cloud);
         });
-  
+  */
         // add scoreboard labels to the scene
         this.addChild(this._scoreBoard.LivesLabel);
         this.addChild(this._scoreBoard.ScoreLabel);

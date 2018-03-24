@@ -3,7 +3,8 @@ module scenes {
     // Private Instance Variables
     private _welcomeLabel: objects.Label;
     private _startButton: objects.Button;
-    private _ocean: objects.Ocean;
+    //private _ocean: objects.Ocean;
+    private _ocean = new objects.OceanLevel2();
 
 
     // Public Properties
@@ -17,7 +18,7 @@ module scenes {
 
     // Private Mathods
     private _startButtonClick():void {
-      managers.Game.currentScene = config.Scene.PLAY;
+      managers.Game.currentScene = config.Scene.LEVEL2;
     }
 
 
@@ -27,7 +28,8 @@ module scenes {
     public Start(): void {
 
 
-      this._ocean = new objects.Ocean();
+     // this._ocean = new objects.Ocean();
+     this._ocean = new objects.OceanLevel2();
 
       this._welcomeLabel = new objects.Label("Mail Pilot", "60px", "Dock51", "#FFFF00", 320, 240, true);
       this._startButton = new objects.Button("startButton", 320, 340);
