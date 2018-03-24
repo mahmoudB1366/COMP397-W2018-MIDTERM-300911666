@@ -44,7 +44,7 @@ var objects;
         };
         // check to see if some boundary has been passed
         IslandLevel2.prototype.CheckBounds = function () {
-            // check lower bounds
+            // check Left bounds
             if (this.x <= 0 - this.width) {
                 this.Reset();
             }

@@ -40,7 +40,7 @@ module objects {
   
       // check to see if some boundary has been passed
       public CheckBounds():void {
-        // check lower bounds
+        // check Right bounds
         if(this.x >= 640 + this.width) {
           this.Reset();
         }

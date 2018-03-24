@@ -65,7 +65,7 @@ var scenes;
                 this._engineSound.stop();
                 managers.Game.currentScene = config.Scene.OVER;
             }
-            if (this._scoreBoard.Score > 300) {
+            if (this._scoreBoard.Score >= 1000) {
                 managers.Game.currentScene = config.Scene.LEVEL3;
             }
         };
