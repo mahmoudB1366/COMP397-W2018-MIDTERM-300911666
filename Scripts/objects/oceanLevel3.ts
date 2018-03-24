@@ -17,17 +17,17 @@ module objects {
   
       // reset the objects location to some value
       private _reset():void {
-        this.x = 0;
+        this.x = -800;
       }
   
       // move the object to some new location
       private _move():void {
-        this.x -= this._dx;
+        this.x += this._dx;
       }
   
       // check to see if some boundary has been passed
       private _checkBounds():void {
-        if(this.x <=-640) {
+        if(this.x >=0) {
           this._reset();
         }
       }

@@ -18,6 +18,7 @@ var objects;
         function IslandLevel2() {
             var _this = _super.call(this, "island") || this;
             _this.Start();
+            _this.rotation = 90;
             return _this;
         }
         // private methods

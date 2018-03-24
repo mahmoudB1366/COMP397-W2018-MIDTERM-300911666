@@ -16,7 +16,7 @@ var objects;
         function PlaneLevel3() {
             var _this = _super.call(this, "plane") || this;
             _this.Start();
-            _this.rotation = 90;
+            _this.rotation = -90;
             return _this;
         }
         // private methods
@@ -30,10 +30,10 @@ var objects;
         // Initializes variables and creates new objects
         PlaneLevel3.prototype.Start = function () {
             this.planeFlash = new objects.PlaneFlash();
-            this.planeFlash.rotation = 90;
+            this.planeFlash.rotation = -90;
             this.planeFlash.alpha = 1;
             this.planeFlash.on("animationend", this._animationEnded.bind(this), false);
-            this.x = 50;
+            this.x = 590;
             this.y = 240;
         };
         // updates the game object every frame
@@ -60,13 +60,13 @@ var objects;
         };
         // check to see if some boundary has been passed
         PlaneLevel3.prototype.CheckBounds = function () {
-            // right boundary
-            if (this.x >= 640 - this.halfWidth) {
-                this.x = 640 - this.halfWidth;
+            // Top boundary
+            if (this.y <= this.halfHeight) {
+                this.y = this.halfHeight;
             }
-            // left boundary
-            if (this.x <= this.halfWidth) {
-                this.x = this.halfWidth;
+            // Buttom boundary
+            if (this.y >= 480 - this.halfHeight) {
+                this.y = 480 - this.halfHeight;
             }
         };
         return PlaneLevel3;

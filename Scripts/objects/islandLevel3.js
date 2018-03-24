@@ -18,6 +18,7 @@ var objects;
         function IslandLevel3() {
             var _this = _super.call(this, "island") || this;
             _this.Start();
+            _this.rotation = -90;
             return _this;
         }
         // private methods
@@ -35,16 +36,16 @@ var objects;
         // reset the objects location to some value
         IslandLevel3.prototype.Reset = function () {
             this.y = Math.floor((Math.random() * (480 - this.width)) + this.halfWidth);
-            this.x = 640 + this.width;
+            this.x = 0 - this.width;
         };
         // move the object to some new location
         IslandLevel3.prototype.Move = function () {
-            this.x -= this._dx;
+            this.x += this._dx;
         };
         // check to see if some boundary has been passed
         IslandLevel3.prototype.CheckBounds = function () {
             // check lower bounds
-            if (this.x <= 0 - this.width) {
+            if (this.x >= 640 + this.width) {
                 this.Reset();
             }
         };

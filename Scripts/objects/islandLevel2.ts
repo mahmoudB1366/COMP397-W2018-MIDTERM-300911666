@@ -8,6 +8,7 @@ module objects {
       constructor() {
         super("island");
         this.Start();
+        this.rotation = 90;
       }
   
       // private methods

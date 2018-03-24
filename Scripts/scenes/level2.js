@@ -31,7 +31,7 @@ var scenes;
             this._island = new objects.IslandLevel2();
             // instantiate the cloud array
             this._clouds = new Array();
-            this._cloudNum = 3;
+            this._cloudNum = 2;
             // loop and add each cloud to the array
             for (var count = 0; count < this._cloudNum; count++) {
                 this._clouds[count] = new objects.CloudLevel2();
@@ -40,10 +40,8 @@ var scenes;
             this._engineSound.loop = -1; // play forever
             this._engineSound.volume = 0.3;
             // create the scoreboard UI for the Scene
-            //this._scoreBoard = new managers.ScoreBoard();
-            //this._scoreBoard = managers.Game.scoreBoard;
             this._scoreBoard = new managers.ScoreBoard();
-            managers.Game.scoreBoard = this._scoreBoard;
+            this._scoreBoard = managers.Game.scoreBoard;
             this.Main();
         };
         // triggered every frame
@@ -66,6 +64,9 @@ var scenes;
             if (this._scoreBoard.Lives <= 0) {
                 this._engineSound.stop();
                 managers.Game.currentScene = config.Scene.OVER;
+            }
+            if (this._scoreBoard.Score > 300) {
+                managers.Game.currentScene = config.Scene.LEVEL3;
             }
         };
         // This is where the fun happens

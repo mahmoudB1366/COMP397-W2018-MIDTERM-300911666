@@ -17,19 +17,18 @@ var scenes;
         function StartScene() {
             var _this = _super.call(this) || this;
             //private _ocean: objects.Ocean;
-            _this._ocean = new objects.OceanLevel2();
+            _this._ocean = new objects.Ocean();
             _this.Start();
             return _this;
         }
         // Private Mathods
         StartScene.prototype._startButtonClick = function () {
-            managers.Game.currentScene = config.Scene.LEVEL2;
+            managers.Game.currentScene = config.Scene.PLAY;
         };
         // Public Methods
         // Initialize Game Variables and objects
         StartScene.prototype.Start = function () {
-            // this._ocean = new objects.Ocean();
-            this._ocean = new objects.OceanLevel2();
+            this._ocean = new objects.Ocean();
             this._welcomeLabel = new objects.Label("Mail Pilot", "60px", "Dock51", "#FFFF00", 320, 240, true);
             this._startButton = new objects.Button("startButton", 320, 340);
             this.Main();

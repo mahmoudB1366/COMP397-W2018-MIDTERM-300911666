@@ -134,8 +134,7 @@
 
     switch (managers.Game.currentScene) {
       case config.Scene.START:
-        //currentScene = new scenes.StartScene();
-        currentScene = new scenes.level2Scene();
+        currentScene = new scenes.StartScene();
         break;
       case config.Scene.PLAY:
         currentScene = new scenes.PlayScene();
@@ -144,7 +143,7 @@
         currentScene = new scenes.level2Scene();
         break;
       case config.Scene.LEVEL3:
-        currentScene = new scenes.OverScene();
+        currentScene = new scenes.level3Scene();
         break;
       case config.Scene.OVER:
         currentScene = new scenes.OverScene();

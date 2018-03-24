@@ -24,15 +24,15 @@ var objects;
         // private methods
         // reset the objects location to some value
         OceanLevel3.prototype._reset = function () {
-            this.x = 0;
+            this.x = -800;
         };
         // move the object to some new location
         OceanLevel3.prototype._move = function () {
-            this.x -= this._dx;
+            this.x += this._dx;
         };
         // check to see if some boundary has been passed
         OceanLevel3.prototype._checkBounds = function () {
-            if (this.x <= -640) {
+            if (this.x >= 0) {
                 this._reset();
             }
         };

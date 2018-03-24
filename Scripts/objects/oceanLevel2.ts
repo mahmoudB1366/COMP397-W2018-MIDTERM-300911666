@@ -27,7 +27,7 @@ module objects {
   
       // check to see if some boundary has been passed
       private _checkBounds():void {
-        if(this.x <=-640) {
+        if(this.x <=-800) {
           this._reset();
         }
       }

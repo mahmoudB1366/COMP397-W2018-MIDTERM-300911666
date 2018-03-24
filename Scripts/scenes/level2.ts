@@ -39,7 +39,7 @@ module scenes {
   
         // instantiate the cloud array
         this._clouds = new Array<objects.CloudLevel2>();
-        this._cloudNum = 3;
+        this._cloudNum = 2;
         // loop and add each cloud to the array
         for (let count = 0; count < this._cloudNum; count++) {
           this._clouds[count] = new objects.CloudLevel2();
@@ -50,11 +50,9 @@ module scenes {
         this._engineSound.volume = 0.3;
   
         // create the scoreboard UI for the Scene
-        //this._scoreBoard = new managers.ScoreBoard();
-        //this._scoreBoard = managers.Game.scoreBoard;
-  
         this._scoreBoard = new managers.ScoreBoard();
-        managers.Game.scoreBoard = this._scoreBoard;
+        this._scoreBoard = managers.Game.scoreBoard;
+  
 
         this.Main();
       }
@@ -84,7 +82,10 @@ module scenes {
           this._engineSound.stop();
           managers.Game.currentScene = config.Scene.OVER;
         }
-  
+        if(this._scoreBoard.Score > 300)
+      {
+        managers.Game.currentScene = config.Scene.LEVEL3;
+      }
       }
   
       // This is where the fun happens

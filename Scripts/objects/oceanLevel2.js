@@ -32,7 +32,7 @@ var objects;
         };
         // check to see if some boundary has been passed
         OceanLevel2.prototype._checkBounds = function () {
-            if (this.x <= -640) {
+            if (this.x <= -800) {
                 this._reset();
             }
         };

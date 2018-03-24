@@ -60,13 +60,13 @@ var objects;
         };
         // check to see if some boundary has been passed
         PlaneLevel2.prototype.CheckBounds = function () {
-            // right boundary
-            if (this.x >= 640 - this.halfWidth) {
-                this.x = 640 - this.halfWidth;
+            // Top boundary
+            if (this.y <= this.halfHeight) {
+                this.y = this.halfHeight;
             }
-            // left boundary
-            if (this.x <= this.halfWidth) {
-                this.x = this.halfWidth;
+            // Buttom boundary
+            if (this.y >= 480 - this.halfHeight) {
+                this.y = 480 - this.halfHeight;
             }
         };
         return PlaneLevel2;
