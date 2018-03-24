@@ -4,7 +4,7 @@ module scenes {
     private _ocean: objects.Ocean;
     private _plane: objects.Plane;
     private _island: objects.Island;
-    private _clouds: objects.Cloud[];
+    private _cloud: objects.Cloud;
     private _cloudNum: number;
     private _scoreBoard: managers.ScoreBoard;
 
@@ -35,13 +35,7 @@ module scenes {
       this._coin = new objects.Coin();
       this._island = new objects.Island();
 
-      // instantiate the cloud array
-      this._clouds = new Array<objects.Cloud>();
-      this._cloudNum = 3;
-      // loop and add each cloud to the array
-      for (let count = 0; count < this._cloudNum; count++) {
-        this._clouds[count] = new objects.Cloud();
-      }
+      this._cloud = new objects.Cloud();
 
       this._engineSound = createjs.Sound.play("engine");
       this._engineSound.loop = -1; // play forever
@@ -64,20 +58,20 @@ module scenes {
       this._coin.Update();
 
       this._island.Update();
+      this._cloud.Update();
 
       // check collision between plane and coin
       managers.Collision.Check(this._plane, this._coin);
-
-      this._clouds.forEach(cloud => {
-        cloud.Update();
-        // check collision between plane and current cloud
-        managers.Collision.Check(this._plane, cloud);
-      });
+      managers.Collision.Check(this._plane, this._cloud);
 
       // if lives fall below zero switch scenes to the game over scene
       if(this._scoreBoard.Lives <= 0) {
         this._engineSound.stop();
         managers.Game.currentScene = config.Scene.OVER;
+      }
+      if(this._scoreBoard.Score > 200)
+      {
+        managers.Game.currentScene = config.Scene.LEVEL2;
       }
 
     }
@@ -98,10 +92,7 @@ module scenes {
       this.addChild(this._plane.planeFlash); // add the plane flashing effect
 
       // add clouds to the scene
-
-      this._clouds.forEach(cloud => {
-        this.addChild(cloud);
-      });
+      this.addChild(this._cloud);
 
       // add scoreboard labels to the scene
       this.addChild(this._scoreBoard.LivesLabel);
